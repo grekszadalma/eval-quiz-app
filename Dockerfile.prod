@@ -15,10 +15,6 @@ RUN npm run build
 # Étape 2 : Image de production Nginx
 FROM nginxinc/nginx-unprivileged:stable-alpine AS production
 
-# Passer temporairement en root pour les mises à jour
-USER root
-
-RUN apk upgrade --no-cache
 
 # Copier la configuration Nginx
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
