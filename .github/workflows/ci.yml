@@ -1,0 +1,76 @@
+name: CI - Build and Security Scan
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-scan:
+    name: Build and scan Docker images
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Build backend
+      - name: Build backend image
+        run: |
+          docker build \
+            -f backend/Dockerfile.prod \
+            -t quiz-backend:${{ github.sha }} \
+            ./backend
+
+       # Scan backend
+      - name: Scan backend with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+            image-ref: quiz-backend:${{ github.sha }}
+            format: table
+            severity: CRITICAL
+            exit-code: '1'
+            ignore-unfixed: false
+
+      # Build frontend
+      - name: Build frontend image
+        run: |
+          docker build \
+            -f Dockerfile.prod \
+            -t quiz-frontend:${{ github.sha }} \
+            .
+     
+
+      # Scan frontend
+      - name: Scan frontend with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: quiz-frontend:${{ github.sha }}
+          format: table
+          severity: CRITICAL
+          exit-code: '1'
+          ignore-unfixed: false
+        
+      - name: Build database image
+        run: |
+            docker build \
+            -f database/Dockerfile \
+            -t quiz-database:${{ github.sha }} \
+            ./database
+
+           
+
+      - name: Scan database with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+            image-ref: quiz-database:${{ github.sha }}
+            format: table
+            severity: CRITICAL
+            exit-code: '1'
+            ignore-unfixed: false

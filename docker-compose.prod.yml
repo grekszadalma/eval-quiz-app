@@ -46,7 +46,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     container_name: quiz-nginx-prod
     restart: unless-stopped
     ports:
