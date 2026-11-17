@@ -28,6 +28,16 @@ jobs:
             -t quiz-backend:${{ github.sha }} \
             ./backend
 
+       # Scan backend
+      - name: Scan backend with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+            image-ref: quiz-backend:${{ github.sha }}
+            format: table
+            severity: CRITICAL
+            exit-code: '1'
+            ignore-unfixed: false
+
       # Build frontend
       - name: Build frontend image
         run: |
@@ -35,6 +45,18 @@ jobs:
             -f Dockerfile.prod \
             -t quiz-frontend:${{ github.sha }} \
             .
+     
+
+      # Scan frontend
+      - name: Scan frontend with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: quiz-frontend:${{ github.sha }}
+          format: table
+          severity: CRITICAL
+          exit-code: '1'
+          ignore-unfixed: false
+        
       - name: Build database image
         run: |
             docker build \
@@ -42,31 +64,13 @@ jobs:
             -t quiz-database:${{ github.sha }} \
             ./database
 
-            # Scan backend
-            - name: Scan backend with Trivy
-                uses: aquasecurity/trivy-action@0.36.0
-                with:
-                image-ref: quiz-backend:${{ github.sha }}
-                format: table
-                severity: CRITICAL
-                exit-code: '1'
-                ignore-unfixed: false
+           
 
       - name: Scan database with Trivy
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
             image-ref: quiz-database:${{ github.sha }}
             format: table
             severity: CRITICAL
             exit-code: '1'
             ignore-unfixed: false
-
-      # Scan frontend
-      - name: Scan frontend with Trivy
-        uses: aquasecurity/trivy-action@0.36.0
-        with:
-          image-ref: quiz-frontend:${{ github.sha }}
-          format: table
-          severity: CRITICAL
-          exit-code: '1'
-          ignore-unfixed: false
