@@ -3,10 +3,10 @@
   "Trivy": {
     "Version": "0.76.2"
   },
-  "ReportID": "01a1e9c8-c9f2-7d2c-9d1f-63e49ca995b3",
-  "CreatedAt": "2026-11-17T14:53:32.658865873+01:00",
-  "ArtifactID": "sha256:775323d05b6ad25070c5bb8e004aa1bf8aa110990d7758dc1f3e50e91d6a87a5",
-  "ArtifactName": "quiz-backend:prod",
+  "ReportID": "01a1ee25-2170-7a61-bc50-81d9243126cb",
+  "CreatedAt": "2026-11-18T11:12:53.232682682+01:00",
+  "ArtifactID": "sha256:b54bca25995420278c084c4799299136060e12c630ca737d499c97a9af0d96af",
+  "ArtifactName": "eval-quiz-app-backend:latest",
   "ArtifactType": "container_image",
   "Metadata": {
     "Size": 189412352,
@@ -14,7 +14,7 @@
       "Family": "alpine",
       "Name": "3.24.4"
     },
-    "ImageID": "sha256:9dcff1aed6e7d6a5e895c3d9b46f35cf6d42437bdb393434ee26b689ea635e44",
+    "ImageID": "sha256:2198ecb76626d4a54c8d294eccb65cd3476d8e6fa7e04db87c19146f80a6111b",
     "DiffIDs": [
       "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
       "sha256:313a78c90b21a75531eacc3998f28ac7cf2f95060c1974a257ed80bd7a7a062c",
@@ -27,9 +27,9 @@
       "sha256:fdbf3a28066be361a5d498d0167ae714289b715602f0f121211b29509808b7e5"
     ],
     "RepoTags": [
-      "quiz-backend:prod"
+      "eval-quiz-app-backend:latest"
     ],
-    "Reference": "quiz-backend:prod",
+    "Reference": "eval-quiz-app-backend:latest",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-11-17T14:50:48.218761629+01:00",
@@ -163,6 +163,11 @@
           "YARN_VERSION=1.22.22",
           "NODE_ENV=production"
         ],
+        "Labels": {
+          "com.docker.compose.project": "eval-quiz-app",
+          "com.docker.compose.service": "backend",
+          "com.docker.compose.version": "2.39.4"
+        },
         "User": "node",
         "WorkingDir": "/app",
         "ExposedPorts": {
@@ -212,7 +217,7 @@
   },
   "Results": [
     {
-      "Target": "quiz-backend:prod (alpine 3.24.4)",
+      "Target": "eval-quiz-app-backend:latest (alpine 3.24.4)",
       "Class": "os-pkgs",
       "Type": "alpine",
       "Packages": [
@@ -7252,7 +7257,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:77e20b2eb57f35e297f35291c912b42f8dbff506827e5c2a179609f1e1800623",
+          "Fingerprint": "sha256:08bfae45f0b85fd0d12ab8b2943ff0c4034b6a9cdef8b0031f78f09924b89d5e",
           "Title": "sigstore-core: @sigstore/core: Signature bypass due to incorrect encoding in preAuthEncoding",
           "Description": "sigstore-js provides JavaScript libraries for interacting with Sigstore services. Prior to 3.2.1, the preAuthEncoding function in @sigstore/core uses Node.js ascii encoding when converting the PAE string to bytes, allowing payloadType to be mutated after signing without invalidating the signature and breaking the type-binding guarantee that DSSE is designed to provide. This issue is fixed in version 3.2.1.",
           "Severity": "MEDIUM",
@@ -7312,7 +7317,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:7388e4c867008ff43cee03ce16a7fb774ca257e53a4074b63454b004137a7bef",
+          "Fingerprint": "sha256:f8c19c4ea6b3f631d768b14a1a52e59167722c220c0a3e11b76a512f8bb22869",
           "Title": "brace-expansion: brace-expansion: Denial of Service via stack exhaustion from crafted brace patterns",
           "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.19, 2.1.5, 3.0.7, and 5.0.10, crafted brace patterns can exhaust the native stack in parseCommaParts because parseCommaParts recursively processes the remainder once per brace group and uses push.apply to pass every element of a very large comma-part array as a function argument. Patterns containing many comma-separated brace groups trigger the recursive path, while the large array triggers the argument-array path without deep recursion. These paths cause recursive and argument-array native stack exhaustion before max or maxLength can limit output, potentially terminating the Node.js process in a process-terminating denial of service. This issue is fixed in versions 1.1.19, 2.1.5, 3.0.7, and 5.0.10.",
           "Severity": "HIGH",
@@ -7414,7 +7419,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:47a68f33f6bf1403c0e84bac02f457815d83854473c9bab23035bb8e8d215fa2",
+          "Fingerprint": "sha256:107f15094e4468a75ab433d8d339260039c42fefcb983f6689134971dcb3038f",
           "Title": "brace-expansion: brace-expansion: Denial of Service via uncontrolled recursion in nested brace patterns",
           "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.20, 2.1.6, 3.0.8, and 5.0.11, deeply nested brace groups cause expand_() to recurse once per nesting level at comma-member and single-set expansion sites, exhausting the native stack before output limits can apply and potentially terminating the Node.js process. expand_ performs uncontrolled recursion for nested brace alternatives and single-part sets. deeply nested brace groups supplied as an untrusted pattern. expand_ is affected. expand is affected. Comma members is affected. Single set is affected. native stack exhaustion during nested sub-expansion. process-terminating denial of service. This issue is fixed in versions 1.1.20, 2.1.6, 3.0.8, and 5.0.11.",
           "Severity": "HIGH",
@@ -7514,7 +7519,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:94b863273f8c1dc0f92a2dda2f1decc4fe6febf4809caaf219e1f964e89fa782",
+          "Fingerprint": "sha256:d83262dad45d313132d9447a208a0160adc11a33b695f768fd70a756b38ad012",
           "Title": "brace-expansion: Brace-expansion: Denial of Service due to exponential-time complexity",
           "Description": "brace-expansion through 5.0.6 is vulnerable to denial of service. The expand() function exhibits exponential-time complexity in the number of consecutive non-expanding '{}' brace groups. An attacker who passes a crafted string to expand(), directly or transitively, can cause significant CPU consumption and event-loop blocking. The max option does not mitigate this, as it bounds the output size rather than the recursion work.",
           "Severity": "HIGH",
@@ -7602,7 +7607,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:5495605c0dd7acc52b4ced7436ee9c8efa945137f0f864b9b6c97de2af687bdb",
+          "Fingerprint": "sha256:af2339e3799be3551d32a1ab0b82ae35e2975a9836648484fea28fa0bf8146f3",
           "Title": "brace-expansion: Brace-expansion: Denial of Service via memory exhaustion in expand() function",
           "Description": "brace-expansion through 5.0.7 is vulnerable to denial of service via memory exhaustion. The expand() function limits the number of results with a max option (default 100,000) but does not bound the length of each result string. By chaining multiple brace groups, an attacker keeps the result count under the limit while making each result progressively longer, so total memory scales with both count and string length until the process hits a fatal, uncatchable out-of-memory error. About 7.5 KB of input ('{a,b}'.repeat(1500)) crashes a default Node.js process. Any application that passes attacker-influenced strings to brace-expansion.expand() - directly or transitively via minimatch / glob brace patterns - can be crashed by a small request. Fixed in 5.0.8 by adding a maxLength option (default 4,000,000) that bounds accumulated output and intermediate arrays.",
           "Severity": "HIGH",
@@ -7695,7 +7700,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:3f70059d19cd2354a3f9a98dc523a8fea488e12f510a8cd3d3293ac3efc13d17",
+          "Fingerprint": "sha256:74c1241a759f668664f96d62d5b03efcb39324a91a6536c7269189ee0c77afe7",
           "Title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
           "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.18, 2.1.4, 3.0.6, and 5.0.9, expand() does not apply maxLength while constructing comma-alternative intermediate arrays or padded sequences, allowing attacker-controlled input to exhaust memory or block the event loop. The fix for CVE-2026-14257 is bypassed by the vulnerability. This issue is fixed in versions 1.1.18, 2.1.4, 3.0.6, and 5.0.9.",
           "Severity": "HIGH",
@@ -7783,7 +7788,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:7d5863a7d2906d229c6854ccbd5dbd6727ed0d6abd65941cf6e1058108213ed1",
+          "Fingerprint": "sha256:a18e7817b1a9cb839ab7bd03f4262fd04e04931ece5f4cf2e3ebd9b987c65972",
           "Title": "brace-expansion: brace-expansion: Denial of Service via crafted brace patterns",
           "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.21, 2.1.7, 3.0.9, and 5.0.12, the expand function handles untrusted {a},b}-shaped patterns with many trailing closing braces by restarting its scan once for each trailing closing brace. The successive full-input rescans with linear working-string growth cause quadratic CPU time and memory pressure that can block the Node.js event loop. The process eventually recovers, making the impact a recoverable CPU denial of service. This issue is fixed in versions 1.1.21, 2.1.7, 3.0.9, and 5.0.12.",
           "Severity": "MEDIUM",
@@ -7893,7 +7898,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:93877aa6d5128528f702dba9dcbdcfbceeb2e56ed9492d2ceec30032ab9d762a",
+          "Fingerprint": "sha256:447c4ee5243953401f09f256a47ab26d6b22aefe84141d64d04360c6f4097764",
           "Title": "brace-expansion: brace-expansion: Denial of Service via zero step value in brace pattern",
           "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to versions 5.0.5, 3.0.2, 2.0.3, and 1.1.13, a brace pattern with a zero step value (e.g., `{1..2..0}`) causes the sequence generation loop to run indefinitely, making the process hang for seconds and allocate heaps of memory. Versions 5.0.5, 3.0.2, 2.0.3, and 1.1.13 fix the issue. As a workaround, sanitize strings passed to `expand()` to ensure a step value of `0` is not used.",
           "Severity": "MEDIUM",
@@ -7965,7 +7970,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:a54d41195bdc38729f8399343a26fef275a82f0b8fe7c380b135005a578f59ed",
+          "Fingerprint": "sha256:bea0b6d0c0019714118543da783fce55cf18c52ba38e85949ce0bc975000dae2",
           "Title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
           "Description": "Glob matches files using patterns the shell uses. From 9.0.0 until 14.0.2, abort branches in src/walker.ts, including GlobUtil.walkCB(), GlobUtil.walkCB2(), GlobUtil.walkCBSync(), and GlobUtil.walkCB2Sync(), invoke the callbacks without returning. After AbortSignal or AbortSignal.timeout() rejects or emits an error, execution can continue into processor.processPatterns(), readdirCB(), and recursive traversal. The issue affects glob() and globStream() when applications expose attacker-influenced patterns or directory trees and rely on cancellation as a traversal budget. Repeated timed-out requests can stack background filesystem operations and CPU work, degrading worker throughput or service availability; no confidentiality or integrity impact was observed. This issue is fixed in 14.0.2.",
           "Severity": "MEDIUM",
@@ -8023,7 +8028,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:a54d41195bdc38729f8399343a26fef275a82f0b8fe7c380b135005a578f59ed",
+          "Fingerprint": "sha256:bea0b6d0c0019714118543da783fce55cf18c52ba38e85949ce0bc975000dae2",
           "Title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
           "Description": "Glob matches files using patterns the shell uses. From 9.0.0 until 14.0.2, abort branches in src/walker.ts, including GlobUtil.walkCB(), GlobUtil.walkCB2(), GlobUtil.walkCBSync(), and GlobUtil.walkCB2Sync(), invoke the callbacks without returning. After AbortSignal or AbortSignal.timeout() rejects or emits an error, execution can continue into processor.processPatterns(), readdirCB(), and recursive traversal. The issue affects glob() and globStream() when applications expose attacker-influenced patterns or directory trees and rely on cancellation as a traversal budget. Repeated timed-out requests can stack background filesystem operations and CPU work, degrading worker throughput or service availability; no confidentiality or integrity impact was observed. This issue is fixed in 14.0.2.",
           "Severity": "MEDIUM",
@@ -8081,7 +8086,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:c77d5578906494fc65eaa5214e6bc700cf47d843426ccb0ada30a9ae7c980cf6",
+          "Fingerprint": "sha256:69bbbc99ce26ed041be4edc6fc8fed231fa8c1c9cc02d438a56a99bb76148764",
           "Title": "ip-address: ip-address: Inconsistent IP address parsing leads to Server-Side Request Forgery (SSRF) and trust-boundary bypass",
           "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.3.1, Address4 accepts an octet written with a leading zero and decodes it as decimal, while the WHATWG URL host parser, inet_aton, and getaddrinfo all decode a leading zero as octal. The library and the network stack therefore disagree about which host a string names. new Address4('012.0.0.1') reports correctForm() of 12.0.0.1 and isPrivate() of false, but fetch('http://012.0.0.1/') connects to 10.0.0.1. An application that builds a network trust-boundary decision on these checks, for example a filter intended to block Server-Side Request Forgery, or SSRF, will classify an internal target as external and allow the request. The defect is in the parse gate rather than in any one classifier, so every consumer of Address4 inherits it: isPrivate(), isLoopback(), isLinkLocal(), isCGNAT(), isInSubnet(), isHostInSubnet(), and correctForm() are all computed from the mis-decoded octets. This issue is fixed in version 10.3.1.",
           "Severity": "HIGH",
@@ -8166,7 +8171,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:8072f90cb5374def5f8eb56c38dbe5e8cbe6c8f8f91af661ee5a612217c76e6d",
+          "Fingerprint": "sha256:a94a7e86679644efcc437fb864161cd2679d9807a67a4b2a8c3a9251361debaa",
           "Title": "ip-address: ip-address: Denial of Service via unbounded IPv6 address parsing",
           "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the Address6 constructor, Address6.isValid, and parse code in src/ipv6.ts accept unbounded strings and expand invalid characters through RE_BAD_CHARACTERS into large diagnostics. Material impact occurs only when an application accepts a very large attacker-controlled field and passes it to Address6 parsing without an earlier length bound. Common URL and header limits, and common body-parser defaults, generally constrain the effect; common defaults typically exclude 32 MiB fields. Megabyte-scale fields can cause a synchronous stall and high transient memory use, approximately 16 MiB can trigger an invalid string length exception, and process termination occurs at approximately 32 MiB. The affected entry points include Address6.isValid and construction paths that reach parse. This issue is fixed in version 10.7.1.",
           "Severity": "MEDIUM",
@@ -8274,7 +8279,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:6b24e9af7e93c15aaee888b92d77c565ee1f9ab17cafe2b82c0c844afcfce6a0",
+          "Fingerprint": "sha256:52147af5553e1d634465a60bff8ac06a1cd00e5699532513d753b7f4af02b803",
           "Title": "ip-address: ip-address: Access control bypass via cross-family subnet comparison",
           "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the isInSubnet and isHostInSubnet methods in src/common.ts compare masked binary strings without validating that both operands use the same IP family. A cross-family containment check whose leading address bits match makes the masked strings compare equal even though IPv4 and IPv6 do not share an address space. An allowlist or denylist decision can therefore classify an address outside the intended range as contained. This issue is fixed in version 10.7.1.",
           "Severity": "MEDIUM",
@@ -8333,7 +8338,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:6d70df6b4279d754dfe91414ceee73bcf9816be629f722f106465e05d649d09f",
+          "Fingerprint": "sha256:a4d8960f8dc25c6f1dfee6e0c2728588a1bb4e9a03a3650935124de11e686de4",
           "Title": "ip-address: ip-address: Security bypass via incomplete IPv6 link-local address validation",
           "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.5.1, the Address6 isLinkLocal method in src/ipv6.ts recognizes only fe80::/64 instead of the complete fe80::/10 IPv6 link-local range. An attacker-controlled address elsewhere in fe80::/10 can therefore pass a trust-boundary check that relies on isLinkLocal. The same address is identified as link-local by getType and getScope, exposing the inconsistent classification. A successful bypass can reach an on-link host outside the intended trust boundary. This issue is fixed in version 10.5.1.",
           "Severity": "MEDIUM",
@@ -8392,7 +8397,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:ae9e7e90b07c11d32be298a1538e778f0a9aa41f444b36ea473a3333fd2e01c5",
+          "Fingerprint": "sha256:a57170923effa2cc2aeff8f7a1b5a63dc0c79951a4e9b50bc10d9ba86c5d0629",
           "Title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
           "Description": "ip-address before 10.7.4 allows a denial of service (CPU consumption from quadratic complexity, and application stall) via many % characters in input reaching a function call that uses the Address6 constructor.",
           "Severity": "MEDIUM",
@@ -8450,7 +8455,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:7d9a0f3b7b8f6991c73d5a8f0f3d2fffdde85bc42d237dcaf31fdd7fdec27f69",
+          "Fingerprint": "sha256:e24e1cc9f4844defbb8273733a0bd6502029e63f52899481a3d06527b27264d8",
           "Title": "ip-address: ip-address: Cross-site scripting via improper HTML escaping of untrusted input",
           "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.1.1, Address6.group() and Address6.link() do not HTML-escape attacker-controlled content before embedding it in the HTML strings they return, and AddressError.parseMessage (emitted by the Address6 constructor for invalid input) can contain unescaped attacker-controlled content in one branch. An application that (1) passes untrusted input to Address6 and (2) renders the output of these methods, or the thrown error's parseMessage, as HTML (e.g. via innerHTML) is vulnerable to cross-site scripting. This vulnerability is fixed in 10.1.1.",
           "Severity": "MEDIUM",
@@ -8589,7 +8594,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:e85750634e4b91fa24e26260235a24ffdfc437a1770c949f70c97e0f04ef53f3",
+          "Fingerprint": "sha256:a52d54bb17262f56da300f7eb6e6069b7669f4ab35f4e1437a8b91d7f36afe07",
           "Title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
           "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Starting in 7.0.0 and prior to 11.0.1, src/index.ts implements firstPhasePreProcess() so that, at optimizationLevel 2 or higher, it repeatedly expands attacker-controlled **/.. pattern segments inside a fixpoint loop, allowing generated globParts entries to be processed and expanded again. secondPhasePreProcess() then compares the expanded entries pairwise, so a short malicious glob can cause excessive CPU and memory consumption during pattern compilation. This issue is fixed in version 11.0.1.",
           "Severity": "MEDIUM",
@@ -8687,7 +8692,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:e85750634e4b91fa24e26260235a24ffdfc437a1770c949f70c97e0f04ef53f3",
+          "Fingerprint": "sha256:a52d54bb17262f56da300f7eb6e6069b7669f4ab35f4e1437a8b91d7f36afe07",
           "Title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
           "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Starting in 7.0.0 and prior to 11.0.1, src/index.ts implements firstPhasePreProcess() so that, at optimizationLevel 2 or higher, it repeatedly expands attacker-controlled **/.. pattern segments inside a fixpoint loop, allowing generated globParts entries to be processed and expanded again. secondPhasePreProcess() then compares the expanded entries pairwise, so a short malicious glob can cause excessive CPU and memory consumption during pattern compilation. This issue is fixed in version 11.0.1.",
           "Severity": "MEDIUM",
@@ -8785,7 +8790,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:1d58a866c6e3c4dca176bef2ae7214e4643f48971ed193badba8d537fcf9e3de",
+          "Fingerprint": "sha256:eb637698d781a7ea0627cf5f98b5b8230d5480ad28d5b597ce78d3642c99c209",
           "Title": "pacote: Pacote: Denial of Service via crafted spec.rawSpec value in addGitSha function",
           "Description": "Versions of the package pacote from 11.2.7 and before 21.5.1 are vulnerable to Denial of Service (DoS) via the addGitSha function. An attacker can exploit this vulnerability by supplying a specially crafted spec.rawSpec value that triggers the function’s regex replacement and string-manipulation logic,  causing excessive CPU consumption and potentially stalling or crashing the process.",
           "Severity": "HIGH",
@@ -8866,7 +8871,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:4f17cac2b088f3468837c2dfa8208ceae67c9f23d8a50ff9a4cf205ca6ae93e0",
+          "Fingerprint": "sha256:5b9e8b5270dc810f4a91f3e3d265a03b7ee150b363a7c33eae58855294215d45",
           "Title": "pacote: Pacote: Denial of Service via crafted spec.rawSpec value in addGitSha function",
           "Description": "Versions of the package pacote from 11.2.7 and before 21.5.1 are vulnerable to Denial of Service (DoS) via the addGitSha function. An attacker can exploit this vulnerability by supplying a specially crafted spec.rawSpec value that triggers the function’s regex replacement and string-manipulation logic,  causing excessive CPU consumption and potentially stalling or crashing the process.",
           "Severity": "HIGH",
@@ -8923,6 +8928,65 @@
           "LastModifiedDate": "2026-07-23T11:10:00.12Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-112366",
+          "VendorIDs": [
+            "GHSA-fc5q-39xc-vjpf"
+          ],
+          "PkgID": "picomatch@4.0.3",
+          "PkgName": "picomatch",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/picomatch/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/picomatch@4.0.3",
+            "UID": "f12a2f1c39a2487"
+          },
+          "InstalledVersion": "4.0.3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:313a78c90b21a75531eacc3998f28ac7cf2f95060c1974a257ed80bd7a7a062c"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112366",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:d2800a13cb258eef6da3207bfb95b1e450ff02501b5cf5127fcf5f7f404a56df",
+          "Title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+          "Description": "Picomatch through 4.0.7 contains a regular expression denial of service vulnerability that allows attackers to block the event loop by supplying single-branch repeated extglob patterns. Attackers can provide globs like +(*) or +(*a), which analyzeRepeatedExtglob in lib/parse.js skips, causing exponential backtracking against short crafted strings and denying service to Node.js applications.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
+              "V40Score": 8.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-112366",
+            "https://github.com/micromatch/picomatch",
+            "https://github.com/micromatch/picomatch/blob/4.0.7/lib/parse.js#L287-L307",
+            "https://github.com/micromatch/picomatch/pull/194",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-112366",
+            "https://www.cve.org/CVERecord?id=CVE-2026-112366",
+            "https://www.vulncheck.com/advisories/picomatch-through-4.0.7-redos-via-single-branch-repeated-extglob-patterns"
+          ],
+          "PublishedDate": "2026-10-19T16:17:07.5Z",
+          "LastModifiedDate": "2026-10-19T21:13:39.973Z"
+        },
+        {
           "VulnerabilityID": "CVE-2026-33671",
           "VendorIDs": [
             "GHSA-c2c7-rcm5-vvqj"
@@ -8947,7 +9011,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:d71eb3873c08fd60bab96d3d0e1acd52fe06cd8cd0dc5f722cdddf83cfab188a",
+          "Fingerprint": "sha256:20a6a11d01682bd339d7dcbcb6a70b4566d8492fddb46de125506d5074e17423",
           "Title": "picomatch: Picomatch: Regular Expression Denial of Service via crafted extglob patterns",
           "Description": "Picomatch is a glob matcher written JavaScript. Versions prior to 4.0.4, 3.0.2, and 2.3.2 are vulnerable to Regular Expression Denial of Service (ReDoS) when processing crafted extglob patterns. Certain patterns using extglob quantifiers such as `+()` and `*()`, especially when combined with overlapping alternatives or nested extglobs, are compiled into regular expressions that can exhibit catastrophic backtracking on non-matching input. Applications are impacted when they allow untrusted users to supply glob patterns that are passed to `picomatch` for compilation or matching. In those cases, an attacker can cause excessive CPU consumption and block the Node.js event loop, resulting in a denial of service. Applications that only use trusted, developer-controlled glob patterns are much less likely to be exposed in a security-relevant way. This issue is fixed in picomatch 4.0.4, 3.0.2 and 2.3.2. Users should upgrade to one of these versions or later, depending on their supported release line. If upgrading is not immediately possible, avoid passing untrusted glob patterns to `picomatch`. Possible mitigations include disabling extglob support for untrusted patterns by using `noextglob: true`, rejecting or sanitizing patterns containing nested extglobs or extglob quantifiers such as `+()` and `*()`, enforcing strict allowlists for accepted pattern syntax, running matching in an isolated worker or separate process with time and resource limits, and applying application-level request throttling and input validation for any endpoint that accepts glob patterns.",
           "Severity": "HIGH",
@@ -9005,7 +9069,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:67f016caf06cbee92788ff337d2a0b0ba4513f4b356a38b59efaaf657f99391c",
+          "Fingerprint": "sha256:cc3d20b5776d579669e811712b613f3b8c26f355de6dc187a85b0caae721d804",
           "Title": "picomatch: Picomatch: Data integrity compromised via method injection with crafted POSIX bracket expressions",
           "Description": "Picomatch is a glob matcher written JavaScript. Versions prior to 4.0.4, 3.0.2, and 2.3.2 are vulnerable to a method injection vulnerability affecting the `POSIX_REGEX_SOURCE` object. Because the object inherits from `Object.prototype`, specially crafted POSIX bracket expressions (e.g., `[[:constructor:]]`) can reference inherited method names. These methods are implicitly converted to strings and injected into the generated regular expression. This leads to incorrect glob matching behavior (integrity impact), where patterns may match unintended filenames. The issue does not enable remote code execution, but it can cause security-relevant logic errors in applications that rely on glob matching for filtering, validation, or access control. All users of affected `picomatch` versions that process untrusted or user-controlled glob patterns are potentially impacted. This issue is fixed in picomatch 4.0.4, 3.0.2 and 2.3.2. Users should upgrade to one of these versions or later, depending on their supported release line. If upgrading is not immediately possible, avoid passing untrusted glob patterns to picomatch. Possible mitigations include sanitizing or rejecting untrusted glob patterns, especially those containing POSIX character classes like `[[:...:]]`; avoiding the use of POSIX bracket expressions if user input is involved; and manually patching the library by modifying `POSIX_REGEX_SOURCE` to use a null prototype.",
           "Severity": "MEDIUM",
@@ -9063,7 +9127,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:b7089202e9ec14c16f5756cd6dc26f5bc86e83e17acd98ac3d00aefc54aa680e",
+          "Fingerprint": "sha256:bc70e823bd6507cf4239a944ab2e1b573772c813645d7a6e8bba87b730299671",
           "Title": "postcss-selector-parser: postcss-selector-parser: Denial of Service via crafted CSS selectors",
           "Description": "PostCSS Selector Parser is a CSS selector parser that integrates with PostCSS but does not require it. Prior to 7.1.6, src/parser.js splitWord() can receive a flat selector as one word token carrying many class or ID indexes because period and hash characters are not tokenizer word delimiters. The uniqs() deduplication and per-index class and ID membership checks repeatedly scan the class and ID index arrays, while a separate Sass-interpolation filtering pass also performs repeated linear scanning. Together, these passes make parsing quadratic in the number of indexes and allow a crafted selector to occupy a synchronous parser thread. The maxNestingDepth guard does not mitigate the issue because the hostile selector can have zero nesting depth. Only consumers that synchronously parse untrusted selectors in an exposed request path are affected; ordinary build-time parsing of trusted sources is not affected. This issue is fixed in version 7.1.6.",
           "Severity": "MEDIUM",
@@ -9125,7 +9189,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:b7538fcc36f5d03715bb54db08e5452720b24c1a7d54e6d679cb1e2ff1a77165",
+          "Fingerprint": "sha256:b6739225f33bf69a651d7b67c66b4190fb984de92f9037793f163e13067dd7ba",
           "Title": "postcss-selector-parser: Postcss: Denial of Service via uncontrolled recursion in AST Serialization",
           "Description": "A vulnerability was determined in postcss-selector-parser up to 6.1.2/7.1.2. Affected is the function toString of the file src/selectors/container.js of the component AST Serialization. Executing a manipulation can lead to uncontrolled recursion. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 6.1.3 and 7.1.3 is able to address this issue. This patch is called 5bc698cef66f8abd12610dc623e5d67cbc0f869d. It is suggested to upgrade the affected component. The vendor explains, that according to his definition \"DoS on server-side on user-generated CSS is low risk for us (since most users compile own CSS with PostCSS).\" The commits were backported to 6.x branch, which was the most downloaded version.",
           "Severity": "LOW",
@@ -9192,7 +9256,7 @@
             "Name": "GitHub Security Advisory npm",
             "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
           },
-          "Fingerprint": "sha256:23edb2d3028bc1a43191aa6de182b284ccaff7db31f0775d9df2bb6d8fc8fece",
+          "Fingerprint": "sha256:f0859b7d745fd04db85495ff960524e2f5f0399f15842bbddd15f41d526ea683",
           "Title": "sigstore: Sigstore: Unauthorized certificates accepted due to ignored `certificateOIDs` verification option",
           "Description": "sigstore-js provides JavaScript libraries for interacting with Sigstore services. Prior to 4.1.1, the documented certificateOIDs option in sigstore.verify() is accepted by the public API but discarded before verification, so required certificate extension OIDs are never checked and applications relying on certificateOIDs to restrict which certificates may sign artifacts can accept unauthorized certificates. This issue is fixed in version 4.1.1.",
           "Severity": "HIGH",
